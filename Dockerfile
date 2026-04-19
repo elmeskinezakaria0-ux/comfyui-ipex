@@ -18,17 +18,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 6. 🚀 OPENVINO & INTEL OPTIMIZATION (Hna fin katzreb)
 RUN pip install --no-cache-dir intel_extension_for_pytorch optimum-intel openvino nncf
 
-# 7. Installi Custom Node dyal OpenVINO d bsse7
-RUN cd custom_nodes && git clone https://github.com/openvino-dev-samples/comfyui-openvino.git
-
-# 8. Wjed Dousiyat l'Models
+# 7. Wjed Dousiyat l'Models
 RUN mkdir -p models/unet models/vae models/clip
 
-# 9. Jbed L'Models (Z-Image-Turbo)
+# 8. Jbed L'Models (Z-Image-Turbo)
 RUN wget -q -O models/unet/z_image_turbo_fp8.safetensors "https://huggingface.co/T5B/Z-Image-Turbo-FP8/resolve/main/z-image-turbo-fp8-e4m3fn.safetensors"
 RUN wget -q -O models/vae/ae.safetensors "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors"
 RUN wget -q -O models/clip/qwen_3_4b.safetensors "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors"
 
-# 10. Ch3el l'Moteur b CPU
+# 9. Ch3el l'Moteur b CPU
 EXPOSE 8080
 CMD ["python3", "main.py", "--listen", "0.0.0.0", "--port", "8080", "--cpu"]
