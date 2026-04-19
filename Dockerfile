@@ -10,8 +10,10 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI.git .
 RUN pip install --no-cache-dir optimum-intel openvino nncf
 
 # 3. Install ComfyUI-OpenVINO Custom Node
-RUN cd /comfyui/custom_nodes && git clone https://github.com/openvino-dev-samples/comfyui-openvino.git
-RUN pip install --no-cache-dir -r /comfyui/custom_nodes/comfyui-openvino/requirements.txt
+RUN mkdir -p /comfyui/custom_nodes && \
+    cd /comfyui/custom_nodes && \
+    git clone https://github.com/openvino-dev-samples/comfyui-openvino.git && \
+    pip install --no-cache-dir -r comfyui-openvino/requirements.txt
 
 # 4. Create folders to be safe
 RUN mkdir -p models/unet models/vae models/clip
