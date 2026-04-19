@@ -9,11 +9,9 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI.git .
 # --- 🚀 CPU OPTIMIZATION (Intel IPEX & OpenVINO) ---
 RUN pip install --no-cache-dir optimum-intel openvino nncf
 
-# 3. Install ComfyUI-OpenVINO Custom Node
-RUN mkdir -p /comfyui/custom_nodes && \
-    cd /comfyui/custom_nodes && \
-    git clone https://github.com/openvino-dev-samples/comfyui-openvino.git && \
-    pip install --no-cache-dir -r comfyui-openvino/requirements.txt
+# 3. Install ComfyUI-OpenVINO Custom Node (BLA REQUIREMENTS BACH MAYCRACHICH)
+RUN cd /comfyui/custom_nodes && \
+    git clone https://github.com/openvino-dev-samples/comfyui-openvino.git
 
 # 4. Create folders to be safe
 RUN mkdir -p models/unet models/vae models/clip
